@@ -1,0 +1,2 @@
+TIFF_file,TIFF_path,JPEG_file,JPEG_path,hamming_distance,ssim_score,used_ssim
+quarzo_84_intera_01.tif,/orfeo/cephfs/scratch/mdmc/appliedAI/SEM/backup_folder/denis/10-01-25/quarzo_84_intera_01.tif,L5_e7cffb0b5df14697bc39c66c20ed7948.jpg,/orfeo/cephfs/scratch/mdmc/appliedAI/SEM/public_dataset/Complete_dataset/Tips/L5_e7cffb0b5df14697bc39c66c20ed7948.jpg,18,0.9952854186327762,True

@@ -10,7 +10,6 @@ The processing pipeline converts TIFF microscopy images to JPEG format, generate
 
 ```
 scripts/
-├── jpeg_converter.py           # TIFF to JPEG conversion
 ├── hashing/                    # Generate perceptual hashes
 │   ├── create_jpeg_hashes_all_labels.py
 │   └── create_jpeg_hashes_single_label.py
@@ -19,8 +18,6 @@ scripts/
 │   └── optimized_compare_n_tiff_to_all_jpeg.py
 ├── labeling/                   # Assign category labels to files
 │   └── copy_.and_assign_true_labels.py
-├── metadata/                   # Validation results
-│   └── compare_accuracy_results.txt
 └── csv/                        # Generated data files
     └── n_tiff_to_all_jpeg_mapping/
 ```

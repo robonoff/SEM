@@ -18,12 +18,10 @@ This repository provides tools for:
 - **Perceptual Hashing**: Generate pHash for image similarity matching
 - **Image Matching**: Match converted JPEGs to original TIFFs using Hamming distance and SSIM
 - **Automated Labeling**: Organize images by scientific categories with standardized naming
-- **Quality Validation**: Accuracy metrics and visualization tools
 
 ### Key Features
 
 - **Large-scale processing**: Handles 38,000+ images efficiently
-- **High accuracy**: >95% matching accuracy with SSIM validation
 - **Modular design**: Independent scripts for each processing step
 - **Comprehensive metrics**: Hamming distance, SSIM, and statistical analysis
 - **Visualization**: Histograms and plots for quality assessment
@@ -183,12 +181,6 @@ This copies and renames images with category labels (L0-L9).
    - Range: 0.0 (completely different) to 1.0 (identical)
    - Threshold: > 0.95 for "excellent" matches
    - Average: ~0.978 across dataset
-
-### Quality Metrics
-
-- **Match Accuracy**: >95.83% excellent matches (SSIM > 0.95)
-- **Mean SSIM**: 0.978
-- **Mean Hamming Distance**: 8.34
 
 ## Performance Tips
 

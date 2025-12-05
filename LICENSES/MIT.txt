@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 Jacopo Zuppa Riccardo Simonetti Sandeep Chavuladi Roberta Lamberti
+Copyright (c) 2025 Jacopo Zuppa Riccardo Simonetti Sandeep Chaluvadi Roberta Lamberti
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction, including

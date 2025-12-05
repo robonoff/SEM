@@ -8,7 +8,6 @@ A comprehensive pipeline for processing, analyzing, and organizing Scanning Elec
 - [Dataset Description](#dataset-description)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
-- [Documentation](#documentation)
 - [License](#license)
 
 ## Project Overview
@@ -33,21 +32,44 @@ This repository provides tools for:
 
 ```
 SEM/
-├── scripts/                    # Processing scripts (see scripts/README.md)
-│   ├── jpeg_converter.py       # TIFF → JPEG conversion
-│   ├── comparing/              # Image matching scripts
-│   ├── hashing/                # Hash generation scripts
-│   ├── labeling/               # Image labeling scripts
-│   ├── metadata/               # Accuracy analysis scripts
-│   ├── plots/                  # Visualization scripts
-│   └── csv/                    # Data files and mappings
-│       └── n_tiff_to_all_jpeg_mapping/  # TIFF-JPEG mapping results
+├── LICENSES/                   # License files (MIT)
+├── scripts/                    # Processing scripts
+│   ├── jpeg_converter.py       # TIFF → JPEG conversion script
+│   ├── comparing/              # Image matching algorithms
+│   │   ├── compare_n_tiff_to_jpeg.py
+│   │   └── optimized_compare_n_tiff_to_all_jpeg.py
+│   ├── hashing/                # Perceptual hash generation
+│   │   ├── create_jpeg_hashes_all_labels.py
+│   │   └── create_jpeg_hashes_single_label.py
+│   ├── labeling/               # Image labeling and organization
+│   │   └── copy_.and_assign_true_labels.py
+│   ├── metadata/               # Accuracy validation
+│   │   └── compare_accuracy_results.txt
+│   └── csv/                    # Generated data files
+│       └── n_tiff_to_all_jpeg_mapping/
 ├── requirement.txt             # Python dependencies
-├── sem_dataset_paper.pdf       # Scientific documentation
-└── output.txt                  # Complete folder structure reference
+├── sem_dataset_paper.pdf       # Scientific paper and methodology
+└── output.txt                  # Complete original dataset structure
 ```
 
-> **Note**: CSV data files are not included in the repository. They will be generated when you run the scripts.
+### Folder Contents
+
+#### `scripts/`
+Main processing pipeline for the SEM dataset:
+
+- **`jpeg_converter.py`**: Standalone script that converts TIFF images to JPEG format (100% quality)
+- **`comparing/`**: Scripts that match converted JPEGs to original TIFFs using perceptual hashing and SSIM
+- **`hashing/`**: Scripts that generate perceptual hashes (pHash) for images to enable similarity matching
+- **`labeling/`**: Scripts that organize and rename images with category labels (L0-L9)
+- **`metadata/`**: Accuracy analysis results and validation metrics
+- **`csv/`**: Generated CSV files with image mappings and hash values (most excluded from repo)
+
+#### Root Files
+
+- **`LICENSES/`**: MIT license text for REUSE compliance
+- **`requirement.txt`**: Python package dependencies for all scripts
+- **`sem_dataset_paper.pdf`**: Research paper with detailed methodology
+
 
 ## Dataset Description
 
@@ -70,8 +92,9 @@ The dataset consists of **10 scientific categories** of SEM images:
 
 ### Dataset Statistics
 
-- **Total Images**: ~38,000 TIFF files
-- **Source Directories**: 981 researcher folders
+- **Total Images**: 10 jpeg compressed files
+- **Total tiff Images to match in order labelled:** 25518 tiff files
+- **Source Directories**: [NFFA-EUROPE - Majority SEM Dataset](https://b2share.eudat.eu/records/e344a8afef08463a855ada08aadbf352)
 - **Format**: Original TIFF (lossless), Converted JPEG (100% quality)
 - **Organization**: By researcher and experiment date
 
@@ -120,16 +143,7 @@ matplotlib>=3.7.0        # Visualization
 
 ## Quick Start
 
-### 1. Convert TIFF to JPEG
-
-```bash
-cd scripts
-python jpeg_converter.py
-# Enter input folder path (where your TIFF files are)
-# Enter output folder path (where to save JPEG files)
-```
-
-### 2. Generate Image Hashes
+### 1. Generate Image Hashes
 
 ```bash
 cd scripts/hashing
@@ -138,7 +152,7 @@ python create_jpeg_hashes_all_labels.py
 
 This creates a CSV file with perceptual hashes for all JPEG images.
 
-### 3. Match JPEG to TIFF
+### 2. Match JPEG to TIFF
 
 ```bash
 cd scripts/comparing
@@ -147,7 +161,7 @@ python compare.py
 
 This matches converted JPEGs to their original TIFF files using Hamming distance and SSIM.
 
-### 4. Assign Labels
+### 3. Assign Labels to TIFF
 
 ```bash
 cd scripts/labeling
@@ -155,72 +169,6 @@ python copy_and_assign_label.py
 ```
 
 This copies and renames images with category labels (L0-L9).
-
-### 5. Validate Results
-
-```bash
-cd scripts/metadata
-python general_accuracy.py
-```
-
-This generates accuracy reports and statistics.
-
-### 6. Visualize Results
-
-```bash
-cd scripts/plots
-python hamming_histogram.py
-python ssim_histogram.py
-```
-
-This creates histograms showing match quality distribution.
-
-## Documentation
-
-### Detailed Documentation
-
-- **[Scripts Documentation](scripts/README.md)**: Comprehensive guide to all scripts, their functions, and usage
-- **Scientific Paper**: See `sem_dataset_paper.pdf` for methodology and research context
-- **Complete Structure**: See `output.txt` for full directory tree
-
-### Processing Pipeline
-
-```
-┌─────────────────────┐
-│  1. TIFF Files      │
-│  (Original Data)    │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│  2. JPEG Conversion │
-│  (jpeg_converter)   │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│  3. Hash Generation │
-│  (create_hashes)    │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│  4. Image Matching  │
-│  (compare.py)       │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│  5. Label Assignment│
-│  (assign_label)     │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│  6. Validation      │
-│  (accuracy check)   │
-└─────────────────────┘
-```
 
 ## Key Algorithms
 
@@ -248,29 +196,11 @@ This creates histograms showing match quality distribution.
 - **Mean SSIM**: 0.978
 - **Mean Hamming Distance**: 8.34
 
-## Project Status
-
-### Completed Features
-
-- ✅ TIFF to JPEG conversion with quality preservation
-- ✅ Perceptual hash generation with image standardization
-- ✅ Dual-metric matching (Hamming + SSIM)
-- ✅ Automated category labeling (10 classes)
-- ✅ Comprehensive accuracy validation
-- ✅ Visualization tools for quality assessment
-
-### Repository Notes
-
-- CSV data files are excluded from version control (see `.gitignore`)
-- Generated data will be stored in `scripts/csv/` when you run the scripts
-- Large binary files (TIFF/JPEG images) are not included in this repository
-
 ## Performance Tips
 
 - **Batch Processing**: Use optimized versions for >1000 images
 - **Memory Management**: Process categories separately for large datasets
 - **Storage**: SSD recommended for I/O intensive operations
-- **CPU**: Multi-threading benefits from 4+ cores
 
 ## Contributing
 
@@ -281,24 +211,6 @@ When contributing to this project:
 3. Test with sample datasets before processing full data
 4. Include docstrings and comments for complex algorithms
 5. Update `requirement.txt` if adding new dependencies
-
-## Troubleshooting
-
-### Common Issues
-
-**"File not found" errors**: 
-- Update absolute paths in script headers to match your environment
-
-**"Out of memory" errors**:
-- Process data by category instead of all at once
-- Use sample scripts for testing before full runs
-
-**Low SSIM values**:
-- Verify images are properly standardized
-- Check for resolution mismatches
-- Use visualization scripts to identify problematic matches
-
-For more detailed troubleshooting, see [scripts/README.md](scripts/README.md).
 
 ## License
 
@@ -322,4 +234,4 @@ For questions or issues:
 
 **Last Updated**: December 2025  
 **Repository**: https://github.com/robonoff/SEM  
-**Maintainer**: Roberta Lamberti
+**Maintainer**: Jacopo Zuppa, Riccardo Simonetti, Sandeep Chavuladi, Roberta Lamberti

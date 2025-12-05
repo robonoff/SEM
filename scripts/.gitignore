@@ -18,3 +18,5 @@ plots/*.png
 plots/*.py
 sample_100/
 metadata/*
+
+scripts/jpeg_converter.py 

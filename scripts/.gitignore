@@ -5,11 +5,12 @@ labeling/optimized_copy_and_assign_label.py
 
 outputs.txt
 
-scripts/csv/n_tiff_to_single_label_jpeg_mapping/*.csv
-scripts/csv/old/*.csv
-scripts/csv/sample_100/*.csv
-scripts/csv/single_label_jpeg_hashes/*.csv
-
+# CSV data files and directories (exclude n_tiff_to_all_jpeg_mapping)
+csv/*.csv
+csv/n_tiff_to_single_label_jpeg_mapping/
+csv/old/
+csv/sample_100/
+csv/single_label_jpeg_hashes/
 
 plots/*.png
 plots/*.py

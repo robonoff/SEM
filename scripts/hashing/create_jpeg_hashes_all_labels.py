@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Jacopo Zuppa Riccardo Simonetti Sandeep Chavuladi Roberta Lamberti
+#
+# SPDX-License-Identifier: MIT
+
 import os
 import imagehash
 from PIL import Image, ImageOps

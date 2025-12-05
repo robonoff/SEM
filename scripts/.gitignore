@@ -1,3 +1,5 @@
+env/
+
 metadata/excellent_accuracy_check
 comparing/compare.py
 labeling/copy_and_assign_label.py

@@ -34,7 +34,6 @@ This repository provides tools for:
 SEM/
 ├── LICENSES/                   # License files (MIT)
 ├── scripts/                    # Processing scripts
-│   ├── jpeg_converter.py       # TIFF → JPEG conversion script
 │   ├── comparing/              # Image matching algorithms
 │   │   ├── compare_n_tiff_to_jpeg.py
 │   │   └── optimized_compare_n_tiff_to_all_jpeg.py
@@ -43,13 +42,10 @@ SEM/
 │   │   └── create_jpeg_hashes_single_label.py
 │   ├── labeling/               # Image labeling and organization
 │   │   └── copy_.and_assign_true_labels.py
-│   ├── metadata/               # Accuracy validation
-│   │   └── compare_accuracy_results.txt
 │   └── csv/                    # Generated data files
 │       └── n_tiff_to_all_jpeg_mapping/
 ├── requirement.txt             # Python dependencies
-├── sem_dataset_paper.pdf       # Scientific paper and methodology
-└── output.txt                  # Complete original dataset structure
+└── sem_dataset_paper.pdf       # Scientific paper and methodology
 ```
 
 ### Folder Contents
@@ -57,11 +53,9 @@ SEM/
 #### `scripts/`
 Main processing pipeline for the SEM dataset:
 
-- **`jpeg_converter.py`**: Standalone script that converts TIFF images to JPEG format (100% quality)
 - **`comparing/`**: Scripts that match converted JPEGs to original TIFFs using perceptual hashing and SSIM
 - **`hashing/`**: Scripts that generate perceptual hashes (pHash) for images to enable similarity matching
 - **`labeling/`**: Scripts that organize and rename images with category labels (L0-L9)
-- **`metadata/`**: Accuracy analysis results and validation metrics
 - **`csv/`**: Generated CSV files with image mappings and hash values (most excluded from repo)
 
 #### Root Files

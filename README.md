@@ -1,6 +1,6 @@
 # SEM Dataset Project
 
-A comprehensive pipeline for processing, analyzing, and organizing Scanning Electron Microscopy (SEM) images. This project handles TIFF to JPEG conversion, perceptual hashing, image matching, and automated labeling of ~38,000 microscopy images across 10 scientific categories.
+A comprehensive pipeline for processing, analyzing, and organizing Scanning Electron Microscopy (SEM) images. This project handles TIFF to JPEG conversion, perceptual hashing, image matching, and automated labeling of microscopy images across 10 scientific categories.
 
 ## Table of Contents
 - [Project Overview](#project-overview)
